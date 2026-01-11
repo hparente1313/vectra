@@ -8,8 +8,6 @@ convert cleanly into font glyphs.** This tool normalizes and converts stroke-bas
 icons into filled paths *before* handing them off to Fantasticon with caching to 
 avoid unnecessary reprocessing.
 
-___
-
 ## Why vectra
 - ✅ Converts **stroke SVGs → filled glyphs**
 - ⚡ **Incremental builds** - only reprocesses changed icons
@@ -21,16 +19,12 @@ ___
 If you're repeatedly regenerating icon fonts during development, this dramatically 
 speeds things up.
 
-___
-
 ## Installation
 ```shell
 pnpm add -D vectra
 # or
 npm install --save-dev vectra
 ```
-
-___
 
 ## Usage
 
@@ -44,10 +38,8 @@ ___
 
 ### With a config file
 ```shell
-vectra --config stroke2fill.config.js
+vectra --config vectra.config.js
 ```
-
-___
 
 ## CLI Options
 | **Option**         | **Description**                      | **Default**  |
@@ -62,8 +54,6 @@ ___
 | `--templateCSS`    | Path to Handlebars CSS template      | built-in     |
 | `--config`         | Path to config file                  | -            |
 | `--help`           | Show usage                           | -            |
-
-___
 
 ## Configuration File
 You may optionally provide a configuration file instead of CLI flags.
@@ -99,8 +89,6 @@ module.exports = {
 ```
 
 This object is passed directly into Fantasticon after preprocessing.
-
-___
 
 ## Templates
 `vectra` supports **custom Handlebars CSS templates.**
