@@ -22,4 +22,7 @@ Handlebars.registerHelper('sortedEntries', function sortedEntries(obj) {
         .map((k) => [k, obj[k]])
 })
 
-// # TODO: Add helper for stripping size values from the beginning of names (24px_), etc
+Handlebars.registerHelper('stripSizePrefix', function stripSizePrefix(value: string) {
+    if (typeof value !== 'string') return ''
+    return value.replace(/^\d+(?:[a-zA-Z]+)_+/, '')
+})
