@@ -3,8 +3,8 @@
     "name": "cz_citlalli",
     "version_provider": "npm",
     "version_scheme": "citlalli_lpsv3",
-    "bump_message": "bump(stroke2fill): v$current_version ---->> v$new_version",
-    "github_repo": "hparente1313/stroke2fill",
+    "bump_message": "bump(vectra): v$current_version ---->> v$new_version",
+    "github_repo": "hparente1313/vectra",
     "root_scope": "meta"
   }
 }

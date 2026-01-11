@@ -1,12 +1,12 @@
 {
-  "name": "stroke-2-fill",
-  "version": "1.0.0",
+  "name": "vectra",
+  "version": "0.1.0",
   "description": "A utility for Fantasticon font generation from SVG icons that are created using strokes",
   "engines": {
     "pnpm": ">=8"
   },
   "bin": {
-    "stroke2fill": "lib/cli.js"
+    "vectra": "lib/cli.js"
   },
   "scripts": {
     "build": "pnpm exec babel src --out-dir lib --extensions \".js\" --copy-files --presets @babel/preset-flow && prettier --write \"lib/**/*.js\"",
