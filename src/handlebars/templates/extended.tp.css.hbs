@@ -1,0 +1,44 @@
+@font-face {
+font-family: '{{ name }}';
+src: {{#replaceSeparator fontSrc ",\n" ", "}}{{this}}{{/replaceSeparator}};
+font-weight: normal;
+font-style: normal;
+}
+
+.{{ selector }} {
+display: inline-block;
+font-family: '{{ name }}';
+font-style: normal;
+font-weight: normal;
+line-height: 1;
+vertical-align: middle;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+/* Optional utilities (design-system agnostic) */
+.{{ selector }}-sm { font-size: 0.875em; }
+.{{ selector }}-lg { font-size: 1.25em; }
+
+/* fixed-width helper (useful in lists/menus) */
+.{{ selector }}-fw { width: 1.25em; text-align: center; }
+
+/* spinning helper */
+.{{ selector }}-spin::before {
+display: inline-block;
+animation: {{ selector }}-spin 1.5s linear infinite;
+}
+
+@keyframes {{ selector }}-spin {
+to { transform: rotate(360deg); }
+}
+
+{{#each (sortedEntries codepoints)}}
+    {{#if ../selector}}
+        .{{ ../prefix }}-{{ stripSizePrefix this.[0] }}::before {
+    {{else}}
+        {{ tag }}.{{ ../prefix }}-{{ stripSizePrefix this.[0] }}::before {
+    {{/if}}
+    content: '\\{{ codepoint this.[1] }}';
+    }
+{{/each}}

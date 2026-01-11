@@ -1,0 +1,144 @@
+@font-face {
+    font-family: '{{ name }}';
+    src: {{#replaceSeparator fontSrc ",\n" ", "}}{{this}}{{/replaceSeparator}};
+    font-weight: normal;
+    font-style: normal
+}
+
+{{# if selector }}
+.{{ selector }} {
+{{ else }}
+{{ tag }}[class^='{{prefix}}-']:before, {{ tag }}[class*=' {{prefix}}-']:before {
+{{/ if }}
+    display: inline-block;
+    font: normal normal normal 1em/1 '{{ name }}';
+    vertical-align: middle;
+    speak: none;
+    text-transform: none;
+    /* Better Font Rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.font-icon-detail {
+  text-align: center;
+  padding: 45px 0 30px;
+  border: 1px solid #e44cc4;
+  border-radius: .1875rem;
+  margin: 15px 0;
+  min-height: 168px;
+}
+
+.font-icon-detail i {
+  color: #FFFFFF;
+  font-size: 1.5em;
+}
+
+.font-icon-detail p {
+  color: #e44cc4 !important;
+  margin-top: 30px;
+  padding: 0 10px;
+  font-size: .7142em;
+}
+
+/*------------------------
+  change icon size
+-------------------------*/
+
+.{{ selector }}-sm {
+  font-size: 0.8em;
+}
+
+.{{ selector }}-lg {
+  font-size: 1.2em;
+}
+
+/* absolute units */
+
+.{{ selector }}-16 {
+  font-size: 16px;
+}
+
+.{{ selector }}-32 {
+  font-size: 32px;
+}
+
+/*----------------------------------
+  add a square/circle background
+-----------------------------------*/
+
+.{{ selector }}-bg-square,
+.{{ selector }}-bg-circle {
+  padding: 0.35em;
+}
+
+.{{ selector }}-bg-circle {
+  border-radius: 50%;
+}
+
+/*------------------------
+  list icons
+-------------------------*/
+
+/*------------------------
+  spinning icons
+-------------------------*/
+
+.{{ selector }}-is-spinning {
+  -webkit-animation: {{ selector }}-spin 2s infinite linear;
+  -moz-animation: {{ selector }}-spin 2s infinite linear;
+  animation: {{ selector }}-spin 2s infinite linear;
+}
+
+@-webkit-keyframes {{ selector }}-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes {{ selector }}-spin {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@keyframes {{ selector }}-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/*------------------------
+  rotated/flipped icons
+-------------------------*/
+
+/*------------------------
+	icons
+-------------------------*/
+
+{{# each (sortedEntries codepoints) }}
+{{# if ../selector }}
+.{{ ../prefix }}-{{ stripSizePrefix this.[0] }}::before {
+{{ else }}
+{{ tag }}.{{ ../prefix }}-{{ stripSizePrefix this.[0] }}::before {
+{{/ if }}
+    content: '\\{{ codepoint this.[1] }}';
+}
+{{/ each }}

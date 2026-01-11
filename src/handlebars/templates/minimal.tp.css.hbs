@@ -1,0 +1,23 @@
+@font-face {
+font-family: '{{ name }}';
+src: {{#replaceSeparator fontSrc ",\n" ", "}}{{this}}{{/replaceSeparator}};
+font-weight: normal;
+font-style: normal;
+}
+
+.{{ selector }} {
+display: inline-block;
+font-family: '{{ name }}';
+font-style: normal;
+font-weight: normal;
+line-height: 1;
+vertical-align: middle;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+{{#each (sortedEntries codepoints)}}
+    .{{../prefix}}-{{stripSizePrefix this.[0]}}::before {
+    content: '\\{{codepoint this.[1]}}';
+    }
+{{/each}}
