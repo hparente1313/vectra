@@ -135,7 +135,7 @@ async function main(): Promise<void> {
                 ? path.resolve(process.cwd(), args.templateCSS)
                 : path.resolve(
                       __dirname,
-                      './handlebars/templates/default.tp.css.hbs'
+                      './handlebars/templates/minimal.tp.css.hbs'
                   )
 
         config = {
